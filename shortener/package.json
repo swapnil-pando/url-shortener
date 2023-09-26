@@ -1,6 +1,6 @@
 {
   "name": "@swapnil-pando/url-shortening",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A URL shortener using SHA1 encryption with no external api",
   "main": "index.js",
   "repository": {
@@ -16,10 +16,11 @@
   },
   "keywords": [
     "npm",
-    "url",
     "url-shortening",
     "sha",
-    "nodejs"
+    "nodejs",
+    "shorteners",
+    "url shortening"
   ],
   "author": "Swapnil Satpathy",
   "license": "ISC",
