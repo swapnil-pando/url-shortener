@@ -1,0 +1,23 @@
+{
+  "name": "url-shortening",
+  "version": "1.0.0",
+  "description": "A URL shortener using SHA1 encryption with no external api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "base62": "^2.0.1",
+    "crypto": "^1.0.1",
+    "uuid": "^3.4.0"
+  },
+  "keywords": [
+    "npm",
+    "url",
+    "url-shortening",
+    "sha",
+    "nodejs"
+  ],
+  "author": "Swapnil Satpathy",
+  "license": "ISC"
+}
