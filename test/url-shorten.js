@@ -1,5 +1,5 @@
-const uuid = require('uuid/v4');
-const UrlShortenerHelper = require('../url-shortener-helper');
+const { v4: uuid } = require('uuid');
+const UrlShortenerHelper = require('@swapnil/url-shortening');
 
 // My long url will be of the below format
 // https://localhost:5050/track-link/A-23-Depot-Z-M-01?id=${uuid}"

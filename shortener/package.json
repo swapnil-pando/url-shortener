@@ -1,19 +1,18 @@
 {
-  "name": "url-shortening",
+  "name": "@swapnil/url-shortening",
   "version": "1.0.0",
   "description": "A URL shortener using SHA1 encryption with no external api",
   "main": "index.js",
-  "repository": "https://github.com/swapnil-pando/url-shortener",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swapnil-pando/url-shortener.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "base62": "^2.0.1",
-    "crypto": "^1.0.1",
-    "uuid": "^3.4.0"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "uuid": "^9.0.1"
   },
   "keywords": [
     "npm",
@@ -23,5 +22,12 @@
     "nodejs"
   ],
   "author": "Swapnil Satpathy",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swapnil-pando/url-shortener/issues"
+  },
+  "homepage": "https://github.com/swapnil-pando/url-shortener/blob/main/shortener/README.md",
+  "directories": {
+    "test": "test"
+  }
 }
