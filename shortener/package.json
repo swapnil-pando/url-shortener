@@ -1,5 +1,5 @@
 {
-  "name": "@swapnil/url-shortening",
+  "name": "@swapnil-pando/url-shortening",
   "version": "1.0.0",
   "description": "A URL shortener using SHA1 encryption with no external api",
   "main": "index.js",
