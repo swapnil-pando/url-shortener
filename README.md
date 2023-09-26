@@ -28,6 +28,9 @@ A long-url to short-url mapping is stored in database with an expiry of 3 months
 Also a retry mechanism is implemented to check if a shortened url already exists in db, before inserting a shortened url. The retry count is set-up to 10.
 
 ## Test Result
+
+One can run test/url-shorten.js file to see the working of shortener
+
 Repeats in a run of 1000000 are 99 with repeat percentage of 0.009899999999999999
 Repeats in a run of 8500000 are 8416 with repeat percentage of 0.09901176470588235
 Repeats in a run of 10000000 are 11725 with repeat percentage of 0.11725
