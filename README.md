@@ -1,36 +1,41 @@
 ## Introduction
 
-This is an implementation of a URL Shortener Implementation without use of any external API using SHA1 encryption
+    This is an implementation of a URL Shortener Implementation without use of any external API using SHA1 encryption.
 
-Original URL => SHA(Original URL) => 40 bits encrypted hash
+    The long URL which will be given to us will be in the format of
+    https://localhost:5050/track-link/A-23-Depot-Z-M-01?id=${uuid}"
 
-We slice this 40 digits hash into 5 equal parts of 8 bits each, which is converted into decimal which again is
-base62 encoded.
+    uuid is unique identifier of 36 characters
 
-Why base-62 encoding is needed ?
+## Problem Statement
+    The problem statement is to convert this long url into a shortened url. Whenever we click on this shortened url , it should redirect us to the long url and eventually to the webpage that the long url is directing to.
 
-If we see the allowed characters in our shortened url i.e [A-Z], [a-z], [0-9], then it comes to 26 + 26 + 10 = 62 
-characters
+## Back of the Envelope Estimation
+    We want our shortened url to be of length ≤ 7.
+    Character set of our shortened url includes [A-Z], [a-z], [0–9] which is 26 + 26 + 10 = 62 characters.
+    So with this we can have 62 ^ 7 = 35 billion unique urls. And this is the reason why we will be using base-62 encryption as well in our implementation.
 
-We want our shortened url to be less than or equal to 7 characters. So 62^7, which is coming upto  35 billion urls.
+## Implementation
+    The original url is encrypted using SHA-1 to a 40 hex encrypted hash.
 
-Hence we used base-62 encoding here.
+    We slice this 40 hex hash into 5 equal parts of 8 hex each, which is converted into decimal which again is base62 encoded.
 
+    This splitting into 5 equal parts is done to make sure that our final base-62 encrypted string will have a length of ≤ 7, since the main target is to produce a shortened url.
 
-In this implementation, it is made sure that the same long url will always generate the same shortened url, unless
-until some randomness is wanted and is given as true in the parameter to the helper function.
+    This shortened url is then stored in database along with the original long url as a kind of a mapper, which will be used while redirection of the shortened url to the original url.
 
+    Now while storing the shortened url in database, we will first check if this shortened url exists or not. If it exists, then we will put some degree of randomness and will generate the shortened url again.
 
+    This retry count has been limited to 10 in our implementation, so as to not affect latency of the system a lot. Also as per our functional requirement, the expiry of the shortened url in database is 3 months.
 
-## Additional Implementation Details
+## Test Results
+    One can run test/url-shorten.js file to see the working of shortener
 
-A long-url to short-url mapping is stored in database with an expiry of 3 months for a record for redirection. 
-Also a retry mechanism is implemented to check if a shortened url already exists in db, before inserting a shortened url. The retry count is set-up to 10.
+    Repeats in a run of 1000000 are 99 with repeat percentage of 0.009899999999999999.
 
-## Test Result
+    Repeats in a run of 8500000 are 8416 with repeat percentage of 0.09901176470588235.
 
-One can run test/url-shorten.js file to see the working of shortener
+    Repeats in a run of 10000000 are 11725 with repeat percentage of 0.11725.
 
-Repeats in a run of 1000000 are 99 with repeat percentage of 0.009899999999999999
-Repeats in a run of 8500000 are 8416 with repeat percentage of 0.09901176470588235
-Repeats in a run of 10000000 are 11725 with repeat percentage of 0.11725
+## Medium Link
+    https://swapnilsatpathycse24.medium.com/url-shortener-b5b231068e0
